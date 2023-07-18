@@ -18,7 +18,7 @@ class ArticlesController < ApplicationController
   def create
     @article = Article.new(article_params)
     if @article.save
-      redirect_to @article, notice: "Article was successfully created." # トップページに戻る
+      redirect_to @article, notice: "#{t('activerecord.models.article')}が正常に作成されました." # トップページに戻る
     else
       render :new, status: :unprocessable_entity# newのページに戻る
     end
@@ -26,7 +26,7 @@ class ArticlesController < ApplicationController
 
   def update
     if @article.update(article_params)
-      redirect_to @article, notice: "Article was successfully update." # トップページに戻る
+      redirect_to @article, notice: "#{t('activerecord.models.article')}は正常に更新されました." # トップページに戻る
     else
       render :new, status: :unprocessable_entity# updateのページに戻る
     end
@@ -34,7 +34,7 @@ class ArticlesController < ApplicationController
 
   def destroy
     @article.destroy
-    redirect_to @article, notice: "Article was successfully destroy." # トップページに戻る
+    redirect_to @article, notice: "#{t('activerecord.models.article')}は正常に削除されました." # トップページに戻る
   end
 
   private
