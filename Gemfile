@@ -54,3 +54,4 @@ gem 'rails-i18n'
 
 # devise
 gem 'devise'
+gem 'devise-i18n'
