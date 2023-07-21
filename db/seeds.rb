@@ -13,6 +13,7 @@
     50.times do |m|
       user.articles.find_or_create_by!(title: "No.#{m + 1}: user00#{n + 1}の記事") do |user_cont|
         user_cont.content = "No.#{m + 1}: user00#{n + 1}の記事の本文"
+        user_cont.tag_ids = Tag.all.pluck(:id)
       end
     end
 end
