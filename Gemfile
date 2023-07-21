@@ -59,6 +59,3 @@ gem 'devise-i18n'
 # kaminari
 gem  "kaminari"
 gem 'bootstrap4-kaminari-views'
-
-# ransack
-gem 'ransack'
