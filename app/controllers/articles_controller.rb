@@ -1,11 +1,13 @@
 class ArticlesController < ApplicationController
-  before_action :set_article, only: %i[ show edit update destroy ]
+  before_action :set_article, only: %i[ edit update destroy ]
+  skip_before_action :authenticate_user!, only: %i[ index show ]
 
   def index
     @articles = Article.all
   end
 
   def show
+    @article = Article.find(params[:id])
   end
 
   def new
@@ -16,7 +18,7 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    @article = Article.new(article_params)
+    @article = current_user.articles.new(article_params)
     if @article.save
       redirect_to @article, notice: "#{t('activerecord.models.article')}が正常に作成されました." # トップページに戻る
     else
@@ -40,7 +42,7 @@ class ArticlesController < ApplicationController
   private
 
   def set_article
-    @article = Article.find(params[:id])
+    @article = current_user.articles.find(params[:id])
   end
 
   def article_params
