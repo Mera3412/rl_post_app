@@ -3,4 +3,7 @@ class Article < ApplicationRecord
 
   belongs_to :user
 
+  has_many :tag_articles
+  has_many :tags, through: :tag_articles
+
 end
